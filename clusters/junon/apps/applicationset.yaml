@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: apps-autodiscovery
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: "https://github.com/idarius/Homelab.git"
+      revision: main
+      files:
+      - path: clusters/junon/apps/*/overlays/*/appset.yaml
+  template:
+    metadata:
+      name: '{{name}}'
+      annotations: { argocd.argoproj.io/sync-wave: "3" }
+    spec:
+      project: default
+      destination: { server: https://kubernetes.default.svc, namespace: '{{namespace}}' }
+      source:
+        repoURL: "https://github.com/idarius/Homelab.git"
+        targetRevision: main
+        path: '{{overlayPath}}'
+      syncPolicy:
+        automated: { prune: true, selfHeal: true }
+        syncOptions: [ "CreateNamespace=true" ]

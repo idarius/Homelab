@@ -1,0 +1,3 @@
+name: app-nginx-preprod
+namespace: nginx-preprod
+overlayPath: clusters/junon/apps/nginx/overlays/preprod

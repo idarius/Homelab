@@ -1,0 +1,3 @@
+name: app-homepage-prod
+namespace: homepage-prod
+overlayPath: clusters/junon/apps/homepage/overlays/prod

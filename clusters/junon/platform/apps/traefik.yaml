@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik
+  namespace: argocd
+  annotations: { argocd.argoproj.io/sync-wave: "1" }
+spec:
+  project: default
+  destination: { server: https://kubernetes.default.svc, namespace: traefik }
+  source:
+    repoURL: https://traefik.github.io/charts
+    chart: traefik
+    targetRevision: 37.1.2
+    helm:
+      values: |
+        providers:
+          kubernetesIngress: { enabled: false }
+          kubernetesCRD: { enabled: true }
+        ingressRoute:
+          dashboard:
+            enabled: false
+        additionalArguments: [ "--api.insecure=false" ]
+  syncPolicy:
+    automated: { prune: true, selfHeal: true }
+    syncOptions: [ "CreateNamespace=true" ]

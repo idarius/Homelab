@@ -1,0 +1,10 @@
+creation_rules:
+  # Terraform env secrets (chiffrer TOUTES les valeurs)
+  - path_regex: infra/envs/.*/tfvars/.*\.(yaml|yml|json|env)$
+    age: "age1rsr5y56jrpl576ww6sq70fp7mjrg99sw3egtvmeve059tsnf0cnqakadt2"
+    encrypted_regex: '^(.*)$'
+
+  # App overlays (tu peux garder le ciblage standard, ou tout chiffrer aussi)
+  - path_regex: clusters/.*/apps/.*/overlays/.*/.*\.sops\.ya?ml$
+    age: "age1rsr5y56jrpl576ww6sq70fp7mjrg99sw3egtvmeve059tsnf0cnqakadt2"
+    encrypted_regex: '^(.*)$'

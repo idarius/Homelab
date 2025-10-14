@@ -1,0 +1,3 @@
+name: app-nginx-prod
+namespace: nginx-prod
+overlayPath: clusters/junon/apps/nginx/overlays/prod

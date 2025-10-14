@@ -1,0 +1,18 @@
+proxmox:
+    api_url: https://REPLACE_ME:8006/api2/json
+    token_id: REPLACE_ME@REPLACE_ME
+    token_secret: REPLACE_ME
+    ssh_username: REPLACE_ME
+    ssh_password: REPLACE_ME
+    node: REPLACE_ME
+    datastore_id: REPLACE_ME
+    storage_pool: REPLACE_ME
+    bridge: REPLACE_ME
+    control_plane_mac: REPLACE_ME
+cluster:
+    cluster_name: REPLACE_ME
+    control_plane_vip: REPLACE_ME
+    gateway: REPLACE_ME
+sops_age:
+    keys_txt: |
+        REPLACE_ME
