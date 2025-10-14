@@ -7,6 +7,8 @@ spec:
   parentRefs:
     - name: web
       namespace: traefik
+  hostnames:
+    - home-preprod.junon.idarius.net
   rules:
   - matches:
     - path:
