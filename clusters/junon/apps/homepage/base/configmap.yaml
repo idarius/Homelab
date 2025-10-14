@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage-config
+data:
+  settings.yaml: |
+    title: Homepage
+    theme: dark
+    color: slate
+    headerStyle: boxed
+    layout:
+      - Services:
+          style: row
+          columns: 3
+    
+  services.yaml: |
+    - Infrastructure:
+        - Kubernetes:
+            icon: kubernetes.png
+            description: Cluster Kubernetes
+            
+  bookmarks.yaml: |
+    - Administration:
+        - ArgoCD:
+            - icon: argocd.png
+              href: https://argocd.kerviel.cloud
+              
+  widgets.yaml: |
+    - search:
+        provider: google
+        target: _blank
