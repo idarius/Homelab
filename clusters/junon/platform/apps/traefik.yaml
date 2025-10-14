@@ -39,3 +39,7 @@ spec:
     jsonPointers:
     - /spec
     - /metadata
+  - group: gateway.networking.k8s.io
+    kind: Gateway
+    jsonPointers:
+    - /status
