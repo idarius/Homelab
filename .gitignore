@@ -1,0 +1,33 @@
+# Terraform
+.terraform/
+.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf*
+*_override.tf*
+
+# Secrets / SOPS / temp
+*.tfvars
+infra/**/tfvars/*.yaml
+infra/**/tfvars/*.yml
+infra/**/tfvars/*.json
+**/*.agekey
+**/*.dec.*
+**/*.bak
+**/*.tmp
+
+# Kube/Talos local configs
+kubeconfig
+talosconfig
+**/kubeconfig
+**/talosconfig
+
+# IDE / builds / archives
+.vscode/
+.idea/
+node_modules/
+dist/
+build/
+*.zip
+*.tar*
