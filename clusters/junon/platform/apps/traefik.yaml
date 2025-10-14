@@ -16,10 +16,14 @@ spec:
         providers:
           kubernetesIngress: { enabled: false }
           kubernetesCRD: { enabled: true }
+          kubernetesGateway:
+            enabled: true
         ingressRoute:
           dashboard:
             enabled: false
         additionalArguments: [ "--api.insecure=false" ]
+        gateway:
+          enabled: false
   syncPolicy:
     automated: { prune: true, selfHeal: true }
     syncOptions: [ "CreateNamespace=true" ]
