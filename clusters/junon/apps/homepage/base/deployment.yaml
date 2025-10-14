@@ -7,6 +7,15 @@ spec:
   template:
     metadata: { labels: { app: homepage } }
     spec:
+      initContainers:
+      - name: init-config
+        image: busybox:latest
+        command: ['sh', '-c', 'cp -r /tmp/config-template/* /app/config/']
+        volumeMounts:
+        - name: config-template
+          mountPath: /tmp/config-template
+        - name: config
+          mountPath: /app/config
       containers:
       - name: homepage
         image: ghcr.io/benphelps/homepage:latest
@@ -15,6 +24,8 @@ spec:
         - name: config
           mountPath: /app/config
       volumes:
-      - name: config
+      - name: config-template
         configMap:
           name: homepage-config
+      - name: config
+        emptyDir: {}
