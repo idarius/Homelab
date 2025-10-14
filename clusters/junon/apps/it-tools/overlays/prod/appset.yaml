@@ -1,0 +1,3 @@
+name: app-it-tools-prod
+namespace: it-tools-prod
+overlayPath: clusters/junon/apps/it-tools/overlays/prod

@@ -1,0 +1,3 @@
+name: app-it-tools-preprod
+namespace: it-tools-preprod
+overlayPath: clusters/junon/apps/it-tools/overlays/preprod
