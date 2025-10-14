@@ -1,4 +1,5 @@
 # Terraform
+.roo/
 .terraform/
 .terraform.lock.hcl
 *.tfstate
