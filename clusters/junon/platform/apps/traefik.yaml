@@ -18,6 +18,13 @@ spec:
           kubernetesCRD: { enabled: true }
           kubernetesGateway:
             enabled: true
+        ports:
+          web:
+            expose:
+              default: true
+          websecure:
+            expose:
+              default: true
         ingressRoute:
           dashboard:
             enabled: false
