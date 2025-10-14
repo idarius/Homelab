@@ -59,4 +59,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: homepage
-    namespace: default
+    namespace: homepage-preprod
+  - kind: ServiceAccount
+    name: homepage
+    namespace: homepage-prod

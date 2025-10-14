@@ -1,0 +1,19 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: it-tools
+  namespace: it-tools-preprod
+spec:
+  parentRefs:
+    - name: web
+      namespace: traefik
+  hostnames:
+    - tools-preprod.junon.idarius.net
+  rules:
+  - matches:
+    - path:
+        type: PathPrefix
+        value: /
+    backendRefs:
+    - name: it-tools
+      port: 80

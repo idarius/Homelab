@@ -4,6 +4,7 @@ namespace: homepage-prod
 resources:
   - ../../base
   - namespace.yaml
+  - serviceaccount.yaml
   - httproute.yaml
 generators:
   - secret.sops.yaml
