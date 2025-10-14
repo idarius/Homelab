@@ -18,6 +18,8 @@ spec:
           kubernetesCRD: { enabled: true }
           kubernetesGateway:
             enabled: true
+            gateway:
+              enabled: false
         ports:
           web:
             expose:
