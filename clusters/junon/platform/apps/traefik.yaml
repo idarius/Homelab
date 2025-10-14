@@ -18,8 +18,6 @@ spec:
           kubernetesCRD: { enabled: true }
           kubernetesGateway:
             enabled: true
-            gateway:
-              enabled: false
         ports:
           web:
             expose:
@@ -31,8 +29,6 @@ spec:
           dashboard:
             enabled: false
         additionalArguments: [ "--api.insecure=false" ]
-        gateway:
-          enabled: false
   syncPolicy:
     automated: { prune: true, selfHeal: true }
     syncOptions: [ "CreateNamespace=true" ]
