@@ -18,15 +18,6 @@ spec:
           kubernetesCRD: { enabled: true }
           kubernetesGateway:
             enabled: true
-        ports:
-          web:
-            port: 8000
-            exposedPort: 80
-            protocol: TCP
-          websecure:
-            port: 8443
-            exposedPort: 443
-            protocol: TCP
         ingressRoute:
           dashboard:
             enabled: false
