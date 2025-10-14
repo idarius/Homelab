@@ -2,7 +2,11 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: homepage-config
+  labels:
+    app.kubernetes.io/name: homepage
 data:
+  kubernetes.yaml: |
+    mode: cluster
   settings.yaml: |
     title: Homepage
     theme: dark
@@ -12,13 +16,8 @@ data:
       - Services:
           style: row
           columns: 3
-    
-  services.yaml: |
-    - Infrastructure:
-        - Kubernetes:
-            icon: kubernetes.png
-            description: Cluster Kubernetes
-            
+  custom.css: ""
+  custom.js: ""
   bookmarks.yaml: |
     - Administration:
         - ArgoCD:
@@ -30,8 +29,25 @@ data:
         - Homepage:
             - icon: homepage.png
               href: http://home.junon.idarius.net
-              
+  services.yaml: |
+    - Infrastructure:
+        - Kubernetes:
+            icon: kubernetes.png
+            description: Cluster Kubernetes
   widgets.yaml: |
+    - kubernetes:
+        cluster:
+          show: true
+          cpu: true
+          memory: true
+          showLabel: true
+          label: "cluster"
+        nodes:
+          show: true
+          cpu: true
+          memory: true
+          showLabel: true
     - search:
         provider: google
         target: _blank
+  docker.yaml: ""

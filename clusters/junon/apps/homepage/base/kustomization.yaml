@@ -1,4 +1,7 @@
 resources:
-- deployment.yaml
-- service.yaml
+- serviceaccount.yaml
+- secret.yaml
+- rbac.yaml
 - configmap.yaml
+- service.yaml
+- deployment.yaml

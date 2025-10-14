@@ -1,31 +1,67 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata: { name: homepage }
+metadata:
+  name: homepage
+  labels:
+    app.kubernetes.io/name: homepage
 spec:
+  revisionHistoryLimit: 3
   replicas: 1
-  selector: { matchLabels: { app: homepage } }
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: homepage
   template:
-    metadata: { labels: { app: homepage } }
+    metadata:
+      labels:
+        app.kubernetes.io/name: homepage
     spec:
-      initContainers:
-      - name: init-config
-        image: busybox:latest
-        command: ['sh', '-c', 'cp -r /tmp/config-template/* /app/config/']
-        volumeMounts:
-        - name: config-template
-          mountPath: /tmp/config-template
-        - name: config
-          mountPath: /app/config
+      serviceAccountName: homepage
+      automountServiceAccountToken: true
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: true
       containers:
-      - name: homepage
-        image: ghcr.io/benphelps/homepage:latest
-        ports: [{ containerPort: 3000 }]
-        volumeMounts:
-        - name: config
-          mountPath: /app/config
+        - name: homepage
+          image: "ghcr.io/gethomepage/homepage:latest"
+          imagePullPolicy: Always
+          env:
+            - name: HOMEPAGE_ALLOWED_HOSTS
+              value: "*"  # Autoriser tous les hôtes pour le moment
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /app/config/custom.js
+              name: homepage-config
+              subPath: custom.js
+            - mountPath: /app/config/custom.css
+              name: homepage-config
+              subPath: custom.css
+            - mountPath: /app/config/bookmarks.yaml
+              name: homepage-config
+              subPath: bookmarks.yaml
+            - mountPath: /app/config/docker.yaml
+              name: homepage-config
+              subPath: docker.yaml
+            - mountPath: /app/config/kubernetes.yaml
+              name: homepage-config
+              subPath: kubernetes.yaml
+            - mountPath: /app/config/services.yaml
+              name: homepage-config
+              subPath: services.yaml
+            - mountPath: /app/config/settings.yaml
+              name: homepage-config
+              subPath: settings.yaml
+            - mountPath: /app/config/widgets.yaml
+              name: homepage-config
+              subPath: widgets.yaml
+            - mountPath: /app/config/logs
+              name: logs
       volumes:
-      - name: config-template
-        configMap:
-          name: homepage-config
-      - name: config
-        emptyDir: {}
+        - name: homepage-config
+          configMap:
+            name: homepage-config
+        - name: logs
+          emptyDir: {}
