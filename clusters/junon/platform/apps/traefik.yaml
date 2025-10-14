@@ -32,3 +32,10 @@ spec:
   syncPolicy:
     automated: { prune: true, selfHeal: true }
     syncOptions: [ "CreateNamespace=true" ]
+  ignoreDifferences:
+  - group: gateway.networking.k8s.io
+    kind: GatewayClass
+    name: traefik
+    jsonPointers:
+    - /spec
+    - /metadata
