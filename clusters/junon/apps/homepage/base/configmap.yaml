@@ -23,7 +23,13 @@ data:
     - Administration:
         - ArgoCD:
             - icon: argocd.png
-              href: https://argocd.kerviel.cloud
+              href: http://192.168.0.240
+        - Nginx:
+            - icon: nginx.png
+              href: http://nginx.junon.idarius.net
+        - Homepage:
+            - icon: homepage.png
+              href: http://home.junon.idarius.net
               
   widgets.yaml: |
     - search:
