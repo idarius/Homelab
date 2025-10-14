@@ -20,11 +20,15 @@ spec:
             enabled: true
         ports:
           web:
+            port: 8000
             expose:
               default: true
+            exposedPort: 80
           websecure:
+            port: 8443
             expose:
               default: true
+            exposedPort: 443
         ingressRoute:
           dashboard:
             enabled: false
